@@ -25,13 +25,13 @@
     "semantic_hash": "gitignore_project_root"
   },
   "notebooks/fase1_audio.ipynb": {
-    "mtime": 1780652698.771819,
-    "ast_hash": "fase1_notebook_audio_pipeline",
-    "semantic_hash": "fase1_notebook_audio_pipeline"
+    "mtime": 1780662511.5204573,
+    "ast_hash": "fase1_notebook_audio_pipeline_v2_noisereduce",
+    "semantic_hash": "fase1_notebook_audio_pipeline_v2_noisereduce"
   },
   "docs/documentacion_tecnica.docx": {
-    "mtime": 1780652600.4911203,
-    "ast_hash": "doc_tecnica_viva_v1",
-    "semantic_hash": "doc_tecnica_viva_v1"
+    "mtime": 1780663243.1773016,
+    "ast_hash": "doc_tecnica_viva_v1_1",
+    "semantic_hash": "doc_tecnica_viva_v1_1"
   }
 }

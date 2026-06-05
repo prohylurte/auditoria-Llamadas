@@ -14,7 +14,7 @@
     "3": [
       "fase1_audio",
       "fase1_nodo_ffmpeg",
-      "fase1_nodo_deepfilternet",
+      "fase1_nodo_noisereduce",
       "fase1_nodo_silero_vad",
       "fase1_nodo_voxlingua"
     ],
@@ -27,7 +27,7 @@
     "0": 0.6666666666666666,
     "1": 1.0,
     "2": 1.0,
-    "3": 0.8,
+    "3": 0.9,
     "4": 1.0
   },
   "gods": ["auditor_avanzado"],
@@ -36,9 +36,20 @@
       "source": "fase1_nodo_voxlingua",
       "target": "auditor_avanzado_evaluar_llamada_local",
       "relation": "feeds_into",
-      "note": "El notebook de Fase 1 es el precursor directo de evaluar_llamada_local() — el audio procesado (VAD + LID) entra como input al auditor principal."
+      "note": "El audio procesado por Fase 1 (VAD + LID) es la entrada directa de evaluar_llamada_local(). Las dos comunidades son las dos mitades del mismo pipeline."
     }
   ],
+  "fase1_status": "COMPLETADA",
+  "fase1_resultado": {
+    "archivo_prueba": "llamada (1).ogg",
+    "duracion_original_s": 1231.13,
+    "duracion_procesada_s": 983.91,
+    "reduccion_silencios_pct": 20.1,
+    "idioma_detectado": "es",
+    "confianza_idioma_pct": 74.3,
+    "flags_activos": false,
+    "nota_implementacion": "noisereduce en Colab; DeepFilterNet 3 en Docker final"
+  },
   "tokens": {
     "input": 0,
     "output": 0

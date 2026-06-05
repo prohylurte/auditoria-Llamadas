@@ -1,0 +1,37 @@
+{
+  "auditor_avanzado.py": {
+    "mtime": 1779918173.9954576,
+    "ast_hash": "9f31ce0e0e34670c1725f81ed1fdabc0",
+    "semantic_hash": "9f31ce0e0e34670c1725f81ed1fdabc0"
+  },
+  "principal.py": {
+    "mtime": 1780645065.058121,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "transcriptor.py": {
+    "mtime": 1780645072.4050207,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "README.md": {
+    "mtime": 1780652621.8274293,
+    "ast_hash": "readme_project_root",
+    "semantic_hash": "readme_project_root"
+  },
+  ".gitignore": {
+    "mtime": 1780652629.063943,
+    "ast_hash": "gitignore_project_root",
+    "semantic_hash": "gitignore_project_root"
+  },
+  "notebooks/fase1_audio.ipynb": {
+    "mtime": 1780652698.771819,
+    "ast_hash": "fase1_notebook_audio_pipeline",
+    "semantic_hash": "fase1_notebook_audio_pipeline"
+  },
+  "docs/documentacion_tecnica.docx": {
+    "mtime": 1780652600.4911203,
+    "ast_hash": "doc_tecnica_viva_v1",
+    "semantic_hash": "doc_tecnica_viva_v1"
+  }
+}

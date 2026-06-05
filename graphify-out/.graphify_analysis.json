@@ -1,0 +1,46 @@
+{
+  "communities": {
+    "0": [
+      "auditor_avanzado",
+      "auditor_avanzado_auditar_directorio_masivo",
+      "auditor_avanzado_evaluar_llamada_local"
+    ],
+    "1": [
+      "principal"
+    ],
+    "2": [
+      "transcriptor"
+    ],
+    "3": [
+      "fase1_audio",
+      "fase1_nodo_ffmpeg",
+      "fase1_nodo_deepfilternet",
+      "fase1_nodo_silero_vad",
+      "fase1_nodo_voxlingua"
+    ],
+    "4": [
+      "doc_tecnica",
+      "readme"
+    ]
+  },
+  "cohesion": {
+    "0": 0.6666666666666666,
+    "1": 1.0,
+    "2": 1.0,
+    "3": 0.8,
+    "4": 1.0
+  },
+  "gods": ["auditor_avanzado"],
+  "surprises": [
+    {
+      "source": "fase1_nodo_voxlingua",
+      "target": "auditor_avanzado_evaluar_llamada_local",
+      "relation": "feeds_into",
+      "note": "El notebook de Fase 1 es el precursor directo de evaluar_llamada_local() — el audio procesado (VAD + LID) entra como input al auditor principal."
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

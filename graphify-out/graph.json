@@ -1,0 +1,218 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "auditor_avanzado.py",
+      "file_type": "code",
+      "source_file": "auditor_avanzado.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "auditor_avanzado.py",
+      "id": "auditor_avanzado"
+    },
+    {
+      "label": "evaluar_llamada_local()",
+      "file_type": "code",
+      "source_file": "auditor_avanzado.py",
+      "source_location": "L20",
+      "community": 0,
+      "norm_label": "evaluar_llamada_local()",
+      "id": "auditor_avanzado_evaluar_llamada_local"
+    },
+    {
+      "label": "auditar_directorio_masivo()",
+      "file_type": "code",
+      "source_file": "auditor_avanzado.py",
+      "source_location": "L200",
+      "community": 0,
+      "norm_label": "auditar_directorio_masivo()",
+      "id": "auditor_avanzado_auditar_directorio_masivo"
+    },
+    {
+      "label": "principal.py",
+      "file_type": "code",
+      "source_file": "principal.py",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "principal.py",
+      "id": "principal"
+    },
+    {
+      "label": "transcriptor.py",
+      "file_type": "code",
+      "source_file": "transcriptor.py",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "transcriptor.py",
+      "id": "transcriptor"
+    },
+    {
+      "label": "notebooks/fase1_audio.ipynb",
+      "file_type": "notebook",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 1",
+      "community": 3,
+      "norm_label": "notebooks/fase1_audio.ipynb",
+      "id": "fase1_audio"
+    },
+    {
+      "label": "Nodo 1: ffmpeg (normalizar audio)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 3",
+      "community": 3,
+      "norm_label": "nodo_ffmpeg",
+      "id": "fase1_nodo_ffmpeg"
+    },
+    {
+      "label": "Nodo 2: DeepFilterNet 3 (ruido)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 4",
+      "community": 3,
+      "norm_label": "nodo_deepfilternet",
+      "id": "fase1_nodo_deepfilternet"
+    },
+    {
+      "label": "Nodo 3: Silero VAD (silencios)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 5",
+      "community": 3,
+      "norm_label": "nodo_silero_vad",
+      "id": "fase1_nodo_silero_vad"
+    },
+    {
+      "label": "Nodo 4: VoxLingua107 (idioma)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 6",
+      "community": 3,
+      "norm_label": "nodo_voxlingua",
+      "id": "fase1_nodo_voxlingua"
+    },
+    {
+      "label": "docs/documentacion_tecnica.docx",
+      "file_type": "doc",
+      "source_file": "docs/documentacion_tecnica.docx",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "docs/documentacion_tecnica.docx",
+      "id": "doc_tecnica"
+    },
+    {
+      "label": "README.md",
+      "file_type": "doc",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "README.md",
+      "id": "readme"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "auditor_avanzado.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "auditor_avanzado",
+      "target": "auditor_avanzado_auditar_directorio_masivo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "auditor_avanzado.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "auditor_avanzado",
+      "target": "auditor_avanzado_evaluar_llamada_local"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase1_audio",
+      "target": "fase1_nodo_ffmpeg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase1_audio",
+      "target": "fase1_nodo_deepfilternet"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase1_audio",
+      "target": "fase1_nodo_silero_vad"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase1_audio",
+      "target": "fase1_nodo_voxlingua"
+    },
+    {
+      "relation": "feeds_into",
+      "confidence": "INFERRED",
+      "source_file": "notebooks/fase1_audio.ipynb",
+      "source_location": "Cell 6",
+      "weight": 0.9,
+      "confidence_score": 0.9,
+      "source": "fase1_nodo_voxlingua",
+      "target": "auditor_avanzado_evaluar_llamada_local"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/documentacion_tecnica.docx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "doc_tecnica",
+      "target": "auditor_avanzado"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "auditor_avanzado"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 0.9,
+      "confidence_score": 0.9,
+      "source": "readme",
+      "target": "fase1_audio"
+    }
+  ],
+  "hyperedges": []
+}

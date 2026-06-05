@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# Modelos y pesos (demasiado grandes para git)
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+models/
+
+# Audio y datos de llamadas (confidencial)
+llamadas_pendientes/
+llamadas_en_proceso/
+llamadas_completadas/
+*.ogg
+*.mp3
+*.m4a
+*.wav
+
+# Reportes generados (salida del sistema)
+reportes_agentes/
+*.pdf
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Bases de datos locales
+*.db
+*.sqlite
+
+# Credenciales y tokens
+.env
+secrets.yaml
+hf_token.txt
+
+# Colab
+*.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Cache de Graphify
+graphify-out/cache/

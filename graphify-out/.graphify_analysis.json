@@ -1,0 +1,186 @@
+{
+  "communities": {
+    "0": [
+      "auditor_avanzado",
+      "auditor_avanzado_auditar_directorio_masivo",
+      "auditor_avanzado_evaluar_llamada_local"
+    ],
+    "1": [
+      "principal"
+    ],
+    "2": [
+      "transcriptor"
+    ],
+    "3": [
+      "fase1_audio",
+      "fase1_nodo_ffmpeg",
+      "fase1_nodo_noisereduce",
+      "fase1_nodo_silero_vad",
+      "fase1_nodo_voxlingua"
+    ],
+    "4": [
+      "doc_tecnica",
+      "readme"
+    ],
+    "5": [
+      "fase2_transcripcion",
+      "fase2_nodo_whisper",
+      "fase2_nodo_whisperx",
+      "fase2_nodo_pyannote"
+    ],
+    "6": [
+      "fase3_analisis",
+      "fase3_nodo_qwen3",
+      "fase3_nodo_rubrica"
+    ],
+    "7": [
+      "fase4_salida",
+      "fase4_nodo_reportlab",
+      "fase4_nodo_postgres"
+    ]
+  },
+  "cohesion": {
+    "0": 0.6666666666666666,
+    "1": 1.0,
+    "2": 1.0,
+    "3": 0.9,
+    "4": 1.0,
+    "5": 0.85,
+    "6": 0.9,
+    "7": 0.9
+  },
+  "gods": [
+    "auditor_avanzado"
+  ],
+  "surprises": [
+    {
+      "source": "fase1_nodo_voxlingua",
+      "target": "fase2_nodo_whisper",
+      "relation": "receives_from",
+      "note": "El audio_vad.wav producido por Fase 1 es la entrada exacta de Whisper en Fase 2 — las dos comunidades forman un pipeline continuo."
+    },
+    {
+      "source": "fase2_nodo_pyannote",
+      "target": "auditor_avanzado_evaluar_llamada_local",
+      "relation": "feeds_into",
+      "note": "El guión diarizado de Fase 2 es el input que evaluar_llamada_local() necesita para el análisis con LLM."
+    }
+  ],
+  "fase1_status": "COMPLETADA",
+  "fase1_resultado": {
+    "archivo_prueba": "llamada (1).ogg",
+    "duracion_original_s": 1231.13,
+    "duracion_procesada_s": 983.91,
+    "reduccion_silencios_pct": 20.1,
+    "idioma_detectado": "es",
+    "confianza_idioma_pct": 74.3,
+    "flags_activos": false,
+    "nota_implementacion": "noisereduce en Colab; DeepFilterNet 3 en Docker final"
+  },
+  "fase2_status": "COMPLETADA",
+  "fase2_nota_implementacion": "faster-whisper Medium (Nodo 5+8 integrados, word_timestamps nativo). pyannote 3.1 con tensor input y .speaker_diarization (API nueva). Sin stable-ts/numba — zero conflicto numpy 2.x.",
+  "tokens": {
+    "input": 0,
+    "output": 0
+  },
+  "fase2_notebook_version": "v6_final",
+  "fase2_resultado": {
+    "n_interlocutores": 2,
+    "speakers": {
+      "SPEAKER_00": 401,
+      "SPEAKER_01": 1
+    },
+    "n_intervenciones_guion": 3,
+    "archivos_salida": [
+      "guion_diarizado.txt",
+      "resultado_fase2.json"
+    ],
+    "nota": "Diarización funcional en Colab. Docker producirá mejor separación con modelo completo."
+  },
+  "fase3_status": "COMPLETADA",
+  "fase3_nota_implementacion": "Qwen3-8B Q4 (bitsandbytes 4-bit, T4 ~6GB VRAM). Rúbrica DIGI completa (30 criterios, 10 secciones) inyectada en prompt (RAG implícito). Pesos dinámicos: N/A excluido del denominador. Salida: resultado_fase3.json para Fase 4.",
+  "fase3_rubrica": {
+    "n_criterios": 30,
+    "n_criticos": 5,
+    "secciones": [
+      "Presentación",
+      "Política de seguridad",
+      "Sondeo",
+      "Asignación de oferta",
+      "Cierre de la venta",
+      "Toma de datos y registro",
+      "Cierre de la llamada",
+      "Trato al cliente",
+      "Gestión de esperas",
+      "Capacidad de comunicación"
+    ],
+    "modelo_colab": "Qwen/Qwen3-8B (4-bit)",
+    "modelo_docker": "Qwen3-235B (vLLM)",
+    "sistema_puntuacion": "nota = sum(peso_i * Si_i) / sum(peso_j * aplicable_j) * 10"
+  },
+  "fase3_resultado": {
+    "nota_llamada_prueba": 3.57,
+    "n_criterios_evaluados": 30,
+    "n_si": 8,
+    "n_no": 14,
+    "n_na": 8,
+    "puntos_fuertes": [
+      "Saludo corporativo",
+      "Personalización",
+      "Empatía con cliente"
+    ],
+    "areas_mejora": [
+      "Cierre de venta",
+      "Imagen positiva DIGI",
+      "Estructura llamada"
+    ],
+    "archivos_salida": [
+      "resultado_fase3.json"
+    ],
+    "nota": "Nota baja esperada — llamada de prueba corta (3 intervenciones). Pipeline funcional."
+  },
+  "fase3_notebook_version": "v1_final",
+  "condiciones_generales_digi": {
+    "status": "ANALIZADO",
+    "version_tarifa": "v.14.8, 5 mayo 2026",
+    "paginas": 24,
+    "criterios_rubrica_enriquecidos": [
+      "ps2",
+      "ao3",
+      "ao4",
+      "ao5",
+      "cl2"
+    ],
+    "archivo_conocimiento": "docs/rubrica_digi_conocimiento.json",
+    "productos_documentados": [
+      "Móvil prepago (6 tarifas: 3€-15€)",
+      "Móvil pospago (6 tarifas + ILIMITODO)",
+      "Fibra DIGI Net (300Mb=25€, 1Gb=30€)",
+      "Fibra SMART (500Mb=10€ a PRO-DIGI 10Gb=25€)",
+      "DIGI Tel (fija, 1€/mes)",
+      "Combo fibra+móvil (-2€/línea)"
+    ],
+    "politicas_documentadas": [
+      "Portabilidad 1 día hábil (02:00-06:00)",
+      "Permanencia fibra 3 meses",
+      "Router en depósito (50€ penalización si no devuelve)",
+      "Instalación fibra sin coste",
+      "Uso no razonable: >30x consumo o >150 números/mes",
+      "IVA 21% incluido (IGIC 7% Canarias, IPSI Ceuta/Melilla)"
+    ]
+  },
+  "fase4_status": "COMPLETADA",
+  "fase4_nota_implementacion": "ReportLab BaseDocTemplate + DIGICanvas. Formato exacto informes reales DIGI: Pagina 1 Resumen de Rendimiento (asesor, nota grande, tabla auditoria, estadisticas Si/No/NA/CriticosKO), Pagina 2 ficha + tabla Estructura de la llamada (4 cols: Pregunta/Respuesta/Puntuacion/Comentarios, subsecciones como filas span full-width azul claro), Pagina 3 tabla Actitud/Comunicacion + Feedback Adicional (Observaciones narrativas + Puntos Fuertes + Areas de Mejora por seccion). Filas No en fondo rojo FDECEA. Puntuacion en formato espanol (0,10). Sin columna ID. Sin graficas matplotlib. Nodo 13: psycopg2 INSERT ON CONFLICT idempotente con todos los campos incluyendo nota_estructura y nota_actitud.",
+  "fase4_notebook_version": "v2_final_formato_real_digi",
+  "fase4_estructura_pdf": {
+    "paginas": 3,
+    "pagina_1": "Resumen de Rendimiento — asesor, nota grande, tabla detalle auditoria, estadisticas Si/No/NA",
+    "pagina_2": "Ficha (ID grabacion, fecha, tipificacion, nota) + Tabla Estructura de la llamada",
+    "pagina_3": "Tabla Actitud / Comunicacion + Feedback Adicional (Observaciones + Puntos Fuertes + Areas de Mejora)",
+    "columnas_tabla": ["Pregunta", "Respuesta", "Puntuacion", "Comentarios"],
+    "formato_puntuacion": "decimal espanol (0,10 no 0.10)",
+    "filas_no": "fondo rojo FDECEA para visibilidad del agente",
+    "fuentes": "DejaVu (UTF-8 completo) con fallback Helvetica",
+    "header_footer": "barra azul #003087 + franja naranja #FF6600 por pagina"
+  }
+}

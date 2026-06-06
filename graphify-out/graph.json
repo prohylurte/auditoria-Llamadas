@@ -168,6 +168,38 @@
       "status": "activo",
       "norm_label": "README.md",
       "id": "readme"
+    },
+    {
+      "label": "notebooks/fase3_analisis_ia.ipynb 🟡",
+      "file_type": "notebook",
+      "source_file": "notebooks/fase3_analisis_ia.ipynb",
+      "source_location": "Cell 1",
+      "community": 6,
+      "status": "notebook_listo",
+      "norm_label": "notebooks/fase3_analisis_ia.ipynb",
+      "id": "fase3_analisis"
+    },
+    {
+      "label": "Nodo 10: Qwen3-8B Q4 🟡",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase3_analisis_ia.ipynb",
+      "source_location": "Cell 7",
+      "community": 6,
+      "status": "notebook_listo",
+      "note": "4-bit bitsandbytes en T4; Docker: Qwen3-235B vLLM",
+      "norm_label": "nodo_qwen3",
+      "id": "fase3_nodo_qwen3"
+    },
+    {
+      "label": "Nodo 11: Rúbrica DIGI + Puntuación Dinámica 🟡",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase3_analisis_ia.ipynb",
+      "source_location": "Cell 8",
+      "community": 6,
+      "status": "notebook_listo",
+      "note": "30 criterios, pesos dinámicos (N/A excluido), salida resultado_fase3.json",
+      "norm_label": "nodo_rubrica",
+      "id": "fase3_nodo_rubrica"
     }
   ],
   "links": [
@@ -332,5 +364,37 @@
       "target": "fase1_audio"
     }
   ],
-  "hyperedges": []
+  "hyperedges": [],
+  "_fase3_links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase3_analisis_ia.ipynb",
+      "source_location": "Cell 7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase3_analisis",
+      "target": "fase3_nodo_qwen3"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase3_analisis_ia.ipynb",
+      "source_location": "Cell 8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase3_analisis",
+      "target": "fase3_nodo_rubrica"
+    },
+    {
+      "relation": "receives_from",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase3_analisis_ia.ipynb",
+      "source_location": "Cell 3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase3_nodo_qwen3",
+      "target": "fase2_nodo_pyannote"
+    }
+  ]
 }

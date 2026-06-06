@@ -84,5 +84,15 @@
       "resultado_fase2.json"
     ],
     "nota": "Diarización funcional en Colab. Docker producirá mejor separación con modelo completo."
+  },
+  "fase3_status": "NOTEBOOK_LISTO",
+  "fase3_nota_implementacion": "Qwen3-8B Q4 (bitsandbytes 4-bit, T4 ~6GB VRAM). Rúbrica DIGI completa (30 criterios, 10 secciones) inyectada en prompt (RAG implícito). Pesos dinámicos: N/A excluido del denominador. Salida: resultado_fase3.json para Fase 4.",
+  "fase3_rubrica": {
+    "n_criterios": 30,
+    "n_criticos": 5,
+    "secciones": ["Presentación", "Política de seguridad", "Sondeo", "Asignación de oferta", "Cierre de la venta", "Toma de datos y registro", "Cierre de la llamada", "Trato al cliente", "Gestión de esperas", "Capacidad de comunicación"],
+    "modelo_colab": "Qwen/Qwen3-8B (4-bit)",
+    "modelo_docker": "Qwen3-235B (vLLM)",
+    "sistema_puntuacion": "nota = sum(peso_i * Si_i) / sum(peso_j * aplicable_j) * 10"
   }
 }

@@ -1,10 +1,10 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v6: Fase 2 COMPLETADA)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v7: Fase 3 Notebook LISTO)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
 
 ## Summary
-- 16 nodes · 17 edges · 6 communities
+- 20 nodes · 20 edges · 7 communities
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -14,7 +14,7 @@
 |------|-------|--------|-----------|
 | Fase 1 — Audio | 1-4 | ✅ COMPLETADA | 20min, 20.1% silencios, ES 74.3% |
 | Fase 2 — Transcripción | 5, 8, 9 | ✅ COMPLETADA  | 2 interlocutores · 3 intervenciones · guion_diarizado.txt |
-| Fase 3 — Análisis IA | 10-11 | 🔴 Pendiente | — |
+| Fase 3 — Análisis IA | 10-11 | 🟡 NOTEBOOK LISTO | Qwen3-8B Q4 · 30 criterios · pesos dinámicos · resultado_fase3.json |
 | Fase 4 — Salida | 12-13 | 🔴 Pendiente | — |
 | Fase 5 — Docker | 14 | 🔴 Pendiente | — |
 
@@ -58,7 +58,12 @@
 - `Nodo 8: word_timestamps nativos de faster-whisper` ✓ — sin dependencias externas
 - `Nodo 9: pyannote 3.1` ✓ — fix use_auth_token → token (API nueva)
 
-## Próximas conexiones esperadas (Fase 3)
-- `notebooks/fase3_analisis_ia.ipynb` → Community 6
-- `fase3_qwen3` → recibe `guion_diarizado.txt` de `fase2_nodo_pyannote`
-- `fase3_rag` → BGE-M3 + pgvector sobre criterios DIGI
+### Community 6 — Pipeline Análisis IA Fase 3 (cohesión: 0.90) 🟡 NOTEBOOK LISTO
+- `notebooks/fase3_analisis_ia.ipynb`
+- `Nodo 10: Qwen3-8B Q4` — LLM auditor (4-bit T4; Docker: Qwen3-235B vLLM)
+- `Nodo 11: Rúbrica DIGI + Puntuación Dinámica` — 30 criterios, pesos N/A-aware, resultado_fase3.json
+
+## Próximas conexiones esperadas (Fase 4)
+- `notebooks/fase4_salida.ipynb` → Community 7
+- `fase4_pdf` → WeasyPrint → replicar formato informe DIGI (tablas azules, gráficas)
+- `fase4_postgres` → INSERT resultado en PostgreSQL

@@ -1,4 +1,4 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — fixes Fase 2: faster-whisper, token API)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v4: auto-fix NumPy, faster-whisper, pyannote token fix)
 
 ## Corpus Check
 - cluster-only mode — file stats not available

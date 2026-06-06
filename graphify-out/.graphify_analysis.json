@@ -37,7 +37,9 @@
     "4": 1.0,
     "5": 0.85
   },
-  "gods": ["auditor_avanzado"],
+  "gods": [
+    "auditor_avanzado"
+  ],
   "surprises": [
     {
       "source": "fase1_nodo_voxlingua",
@@ -64,9 +66,10 @@
     "nota_implementacion": "noisereduce en Colab; DeepFilterNet 3 en Docker final"
   },
   "fase2_status": "EN_PROGRESO",
-  "fase2_nota_implementacion": "faster-whisper + stable-ts en Colab (sin conflicto NumPy 2.x); whisperX completo en Docker final",
+  "fase2_nota_implementacion": "faster-whisper + stable-ts + pyannote. Auto-fix NumPy en Paso 0 del notebook. Fix: use_auth_token → token (pyannote API nueva).",
   "tokens": {
     "input": 0,
     "output": 0
-  }
+  },
+  "fase2_notebook_version": "v4"
 }

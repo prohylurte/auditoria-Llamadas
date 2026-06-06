@@ -1,0 +1,57 @@
+# ── Git ──────────────────────────────────────────────────────
+.git
+.gitignore
+
+# ── Audio (NUNCA en la imagen) ────────────────────────────────
+audio/
+*.ogg
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.aac
+
+# ── Salidas locales ───────────────────────────────────────────
+output/
+*.pdf
+
+# ── Modelos locales ───────────────────────────────────────────
+models/
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Graphify ─────────────────────────────────────────────────
+graphify-out/
+
+# ── Entornos y secretos ───────────────────────────────────────
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# ── Sistema ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+tmp/
+temp/

@@ -2,8 +2,8 @@
   "directed": false,
   "multigraph": false,
   "graph": {
-    "n_nodes": 22,
-    "n_edges": 25
+    "n_nodes": 25,
+    "n_edges": 31
   },
   "nodes": [
     {
@@ -239,6 +239,36 @@
       "status": "completado",
       "note": "psycopg2 INSERT ON CONFLICT idempotente. Campos: nota_final, nota_estructura, nota_actitud, n_criticos_ko, JSONB completo",
       "norm_label": "nodo_postgres"
+    },
+    {
+      "label": "Dockerfile + docker-compose.yml",
+      "file_type": "config",
+      "source_file": "Dockerfile",
+      "source_location": "L1",
+      "community": 8,
+      "status": "completada",
+      "norm_label": "Dockerfile",
+      "id": "fase5_docker"
+    },
+    {
+      "label": "pipeline.py (CLI orquestador)",
+      "file_type": "code",
+      "source_file": "pipeline.py",
+      "source_location": "L1",
+      "community": 8,
+      "status": "completada",
+      "norm_label": "pipeline.py",
+      "id": "fase5_pipeline"
+    },
+    {
+      "label": "Auto-deteccion VRAM → Qwen3 (8B/14B/72B)",
+      "file_type": "logic",
+      "source_file": "pipeline.py",
+      "source_location": "L60",
+      "community": 8,
+      "status": "completada",
+      "norm_label": "vram_autodetect",
+      "id": "fase5_vram_autodetect"
     }
   ],
   "links": [
@@ -491,6 +521,42 @@
       "confidence_score": 1.0,
       "source": "fase3_nodo_qwen3",
       "target": "fase2_nodo_pyannote"
+    },
+    {
+      "source": "fase5_docker",
+      "target": "fase5_pipeline",
+      "key": 0,
+      "relation": "runs"
+    },
+    {
+      "source": "fase5_pipeline",
+      "target": "fase1_audio",
+      "key": 0,
+      "relation": "orchestrates"
+    },
+    {
+      "source": "fase5_pipeline",
+      "target": "fase2_transcripcion",
+      "key": 0,
+      "relation": "orchestrates"
+    },
+    {
+      "source": "fase5_pipeline",
+      "target": "fase3_analisis",
+      "key": 0,
+      "relation": "orchestrates"
+    },
+    {
+      "source": "fase5_pipeline",
+      "target": "fase4_salida",
+      "key": 0,
+      "relation": "orchestrates"
+    },
+    {
+      "source": "fase5_pipeline",
+      "target": "fase5_vram_autodetect",
+      "key": 0,
+      "relation": "uses"
     }
   ],
   "hyperedges": [],

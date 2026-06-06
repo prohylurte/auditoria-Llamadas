@@ -177,10 +177,25 @@
     "pagina_1": "Resumen de Rendimiento — asesor, nota grande, tabla detalle auditoria, estadisticas Si/No/NA",
     "pagina_2": "Ficha (ID grabacion, fecha, tipificacion, nota) + Tabla Estructura de la llamada",
     "pagina_3": "Tabla Actitud / Comunicacion + Feedback Adicional (Observaciones + Puntos Fuertes + Areas de Mejora)",
-    "columnas_tabla": ["Pregunta", "Respuesta", "Puntuacion", "Comentarios"],
+    "columnas_tabla": [
+      "Pregunta",
+      "Respuesta",
+      "Puntuacion",
+      "Comentarios"
+    ],
     "formato_puntuacion": "decimal espanol (0,10 no 0.10)",
     "filas_no": "fondo rojo FDECEA para visibilidad del agente",
     "fuentes": "DejaVu (UTF-8 completo) con fallback Helvetica",
     "header_footer": "barra azul #003087 + franja naranja #FF6600 por pagina"
-  }
+  },
+  "fase5_status": "COMPLETADA",
+  "fase5_nota_implementacion": "Dockerfile nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04 + pipeline.py CLI orquestador Fases 1-4. Auto-deteccion VRAM: <8GB->Qwen3-8B 4-bit, 8-20GB->Qwen3-14B 4-bit, >20GB->Qwen3-72B 4-bit. HF_TOKEN solo via variable de entorno (nunca en imagen). docker-compose con GPU passthrough (nvidia-container-toolkit), volumen persistente para modelos. requirements.txt versionado, PyTorch cu121 instalado por separado. .dockerignore excluye audio, modelos, .git y secretos.",
+  "fase5_archivos": [
+    "Dockerfile",
+    "pipeline.py",
+    "docker-compose.yml",
+    "requirements.txt",
+    ".dockerignore"
+  ],
+  "fase5_uso_cli": "HF_TOKEN=hf_xxx docker compose run --rm auditoria audio/llamada.ogg --asesor 'Maria Garcia' --auditor 'Carlos Martinez'"
 }

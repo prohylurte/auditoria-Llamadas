@@ -1,0 +1,42 @@
+# ============================================================
+# DIGI Auditoría Pipeline — Dependencias Python
+# ============================================================
+# PyTorch se instala por separado en el Dockerfile (cu121)
+# ============================================================
+
+# ── Fase 1: Procesamiento de audio ───────────────────────────
+noisereduce>=3.0.0
+librosa>=0.10.0
+soundfile>=0.12.0
+pydub>=0.25.1
+# silero-vad se carga desde torch.hub, no requiere pip
+# voxlingua107 se carga desde torch.hub, no requiere pip
+
+# ── Fase 2: Transcripción ─────────────────────────────────────
+faster-whisper>=1.0.0
+pyannote.audio>=3.1.0
+# whisperx opcional — comentar si da conflictos
+# whisperx>=3.1.0
+
+# ── Fase 3: Análisis IA (LLM) ────────────────────────────────
+transformers>=4.40.0
+bitsandbytes>=0.43.0
+accelerate>=0.27.0
+sentencepiece>=0.1.99
+# vllm — solo para servidores con multi-GPU (comentar si no aplica)
+# vllm>=0.4.0
+
+# ── Fase 4: Salida ────────────────────────────────────────────
+reportlab>=4.0.0
+psycopg2-binary>=2.9.0
+
+# ── Utilidades generales ──────────────────────────────────────
+numpy>=1.24.0,<2.0.0
+scipy>=1.11.0
+tqdm>=4.66.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# ── HuggingFace Hub ───────────────────────────────────────────
+huggingface-hub>=0.20.0
+datasets>=2.14.0

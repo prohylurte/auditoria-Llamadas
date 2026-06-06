@@ -1,0 +1,57 @@
+# ============================================================
+# DIGI Auditoría Pipeline — docker-compose.yml
+# ============================================================
+# Uso básico:
+#   HF_TOKEN=hf_xxx docker compose run --rm auditoria audio/llamada.ogg \
+#     --asesor "Maria Garcia" --auditor "Carlos Martinez"
+#
+# Ver info GPU y modelo elegido:
+#   docker compose run --rm auditoria --info-gpu
+# ============================================================
+
+services:
+  auditoria:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digi-auditoria:latest
+    container_name: digi-pipeline
+
+    # ── GPU passthrough (requiere nvidia-container-toolkit) ──
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    # ── Entorno ──────────────────────────────────────────────
+    environment:
+      # HuggingFace token — pasar en la línea de comandos:
+      #   HF_TOKEN=hf_xxx docker compose run auditoria ...
+      - HF_TOKEN=${HF_TOKEN:-}
+      # Directorio de caché de modelos dentro del contenedor
+      - HF_HOME=/app/models/huggingface
+      # Desactivar telemetría
+      - TRANSFORMERS_NO_ADVISORY_WARNINGS=1
+      - TOKENIZERS_PARALLELISM=false
+
+    # ── Volúmenes ─────────────────────────────────────────────
+    volumes:
+      # Audio de entrada (montar tu carpeta local)
+      - ./audio:/app/audio:ro
+      # Salida: PDFs, JSONs de resultados
+      - ./output:/app/output
+      # Caché de modelos (persiste entre ejecuciones — ahorra tiempo)
+      - digi_models:/app/models
+
+    # ── Recursos ─────────────────────────────────────────────
+    shm_size: '2gb'     # shared memory necesaria para PyTorch multi-worker
+    stdin_open: true
+    tty: true
+
+# ── Volumen persistente para modelos ─────────────────────────
+volumes:
+  digi_models:
+    name: digi_auditoria_models

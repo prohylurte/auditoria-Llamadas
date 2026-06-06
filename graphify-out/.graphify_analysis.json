@@ -32,6 +32,11 @@
       "fase3_analisis",
       "fase3_nodo_qwen3",
       "fase3_nodo_rubrica"
+    ],
+    "7": [
+      "fase4_salida",
+      "fase4_nodo_reportlab",
+      "fase4_nodo_postgres"
     ]
   },
   "cohesion": {
@@ -41,7 +46,8 @@
     "3": 0.9,
     "4": 1.0,
     "5": 0.85,
-    "6": 0.9
+    "6": 0.9,
+    "7": 0.9
   },
   "gods": [
     "auditor_avanzado"
@@ -162,5 +168,8 @@
       "Uso no razonable: >30x consumo o >150 números/mes",
       "IVA 21% incluido (IGIC 7% Canarias, IPSI Ceuta/Melilla)"
     ]
-  }
+  },
+  "fase4_status": "COMPLETADA",
+  "fase4_nota_implementacion": "ReportLab BaseDocTemplate con DIGICanvas (header/footer personalizado). Paleta DIGI: azul #003087 + naranja #FF6600. 3 graficas matplotlib embebidas: donut, barras por seccion, gauge. Tablas con alternado C_BLUE_L/white y criticos marcados. Nodo 13: psycopg2 INSERT con ON CONFLICT para idempotencia. Salida: informe_auditoria.pdf en Drive/outputs.",
+  "fase4_notebook_version": "v1_final"
 }

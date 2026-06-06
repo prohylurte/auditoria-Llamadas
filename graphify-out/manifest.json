@@ -15,9 +15,14 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "README.md": {
-    "mtime": 1780652621.8274293,
-    "ast_hash": "readme_project_root",
-    "semantic_hash": "readme_project_root"
+    "mtime": 1780668346.6554146,
+    "ast_hash": "readme_v2_fase1_completada_fase2_progreso",
+    "semantic_hash": "readme_v2_fase1_completada_fase2_progreso"
+  },
+  "notebooks/fase2_transcripcion.ipynb": {
+    "mtime": 1780663826.90839,
+    "ast_hash": "fase2_notebook_whisper_whisperx_pyannote",
+    "semantic_hash": "fase2_notebook_whisper_whisperx_pyannote"
   },
   ".gitignore": {
     "mtime": 1780652629.063943,

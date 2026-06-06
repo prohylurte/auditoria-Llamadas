@@ -21,6 +21,12 @@
     "4": [
       "doc_tecnica",
       "readme"
+    ],
+    "5": [
+      "fase2_transcripcion",
+      "fase2_nodo_whisper",
+      "fase2_nodo_whisperx",
+      "fase2_nodo_pyannote"
     ]
   },
   "cohesion": {
@@ -28,15 +34,22 @@
     "1": 1.0,
     "2": 1.0,
     "3": 0.9,
-    "4": 1.0
+    "4": 1.0,
+    "5": 0.85
   },
   "gods": ["auditor_avanzado"],
   "surprises": [
     {
       "source": "fase1_nodo_voxlingua",
+      "target": "fase2_nodo_whisper",
+      "relation": "receives_from",
+      "note": "El audio_vad.wav producido por Fase 1 es la entrada exacta de Whisper en Fase 2 — las dos comunidades forman un pipeline continuo."
+    },
+    {
+      "source": "fase2_nodo_pyannote",
       "target": "auditor_avanzado_evaluar_llamada_local",
       "relation": "feeds_into",
-      "note": "El audio procesado por Fase 1 (VAD + LID) es la entrada directa de evaluar_llamada_local(). Las dos comunidades son las dos mitades del mismo pipeline."
+      "note": "El guión diarizado de Fase 2 es el input que evaluar_llamada_local() necesita para el análisis con LLM."
     }
   ],
   "fase1_status": "COMPLETADA",
@@ -50,6 +63,8 @@
     "flags_activos": false,
     "nota_implementacion": "noisereduce en Colab; DeepFilterNet 3 en Docker final"
   },
+  "fase2_status": "EN_PROGRESO",
+  "fase2_nota_implementacion": "faster-whisper + stable-ts en Colab (sin conflicto NumPy 2.x); whisperX completo en Docker final",
   "tokens": {
     "input": 0,
     "output": 0

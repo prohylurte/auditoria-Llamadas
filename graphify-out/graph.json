@@ -106,6 +106,49 @@
       "id": "fase1_nodo_voxlingua"
     },
     {
+      "label": "notebooks/fase2_transcripcion.ipynb 🟡",
+      "file_type": "notebook",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 1",
+      "community": 5,
+      "status": "en_progreso",
+      "norm_label": "notebooks/fase2_transcripcion.ipynb",
+      "id": "fase2_transcripcion"
+    },
+    {
+      "label": "Nodo 5: faster-whisper Medium (→ Large V3 Docker)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 5",
+      "community": 5,
+      "status": "pendiente_ejecucion",
+      "note": "Colab: faster-whisper (sin conflicto NumPy). Docker: whisperX + Large V3",
+      "norm_label": "nodo_faster_whisper",
+      "id": "fase2_nodo_whisper"
+    },
+    {
+      "label": "Nodo 8: stable-ts (alineación → WhisperX Docker)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 6",
+      "community": 5,
+      "status": "pendiente_ejecucion",
+      "note": "Colab: stable-ts (compatible NumPy 2.x). Docker: WhisperX word alignment",
+      "norm_label": "nodo_stable_ts",
+      "id": "fase2_nodo_whisperx"
+    },
+    {
+      "label": "Nodo 9: pyannote (diarización)",
+      "file_type": "notebook_cell",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 7",
+      "community": 5,
+      "status": "pendiente_ejecucion",
+      "note": "Requiere token HuggingFace — introducido via getpass",
+      "norm_label": "nodo_pyannote",
+      "id": "fase2_nodo_pyannote"
+    },
+    {
       "label": "docs/documentacion_tecnica.docx v1.1",
       "file_type": "doc",
       "source_file": "docs/documentacion_tecnica.docx",
@@ -196,6 +239,66 @@
       "confidence_score": 0.9,
       "source": "fase1_nodo_voxlingua",
       "target": "auditor_avanzado_evaluar_llamada_local"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase2_transcripcion",
+      "target": "fase2_nodo_whisper"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase2_transcripcion",
+      "target": "fase2_nodo_whisperx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase2_transcripcion",
+      "target": "fase2_nodo_pyannote"
+    },
+    {
+      "relation": "receives_from",
+      "confidence": "EXTRACTED",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fase2_nodo_whisper",
+      "target": "fase1_nodo_voxlingua"
+    },
+    {
+      "relation": "feeds_into",
+      "confidence": "INFERRED",
+      "source_file": "notebooks/fase2_transcripcion.ipynb",
+      "source_location": "Cell 8",
+      "weight": 0.9,
+      "confidence_score": 0.9,
+      "source": "fase2_nodo_pyannote",
+      "target": "auditor_avanzado_evaluar_llamada_local"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 0.9,
+      "confidence_score": 0.9,
+      "source": "readme",
+      "target": "fase2_transcripcion"
     },
     {
       "relation": "documents",

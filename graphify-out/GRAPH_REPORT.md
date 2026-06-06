@@ -1,33 +1,34 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-05 — actualizado tras Fase 1)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-05 — actualizado tras creación Fase 2)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
 
 ## Summary
-- 12 nodes · 10 edges · 5 communities
-- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS
+- 16 nodes · 17 edges · 6 communities
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Estado del Pipeline
 
 | Fase | Nodos | Estado | Resultado |
 |------|-------|--------|-----------|
-| Fase 1 — Audio | 1-4 | ✅ COMPLETADA | 20min llamada, 20.1% silencios eliminados, ES 74.3% |
-| Fase 2 — Transcripción | 5-9 | 🔴 Pendiente | Whisper Medium + WhisperX + pyannote |
-| Fase 3 — Análisis IA | 10-11 | 🔴 Pendiente | Qwen3-8B + RAG |
-| Fase 4 — Salida | 12-13 | 🔴 Pendiente | PDF + PostgreSQL |
-| Fase 5 — Docker | 14 | 🔴 Pendiente | Imagen final datacenter |
+| Fase 1 — Audio | 1-4 | ✅ COMPLETADA | 20min, 20.1% silencios, ES 74.3% |
+| Fase 2 — Transcripción | 5, 8, 9 | 🟡 EN PROGRESO | Notebook listo, pendiente ejecución |
+| Fase 3 — Análisis IA | 10-11 | 🔴 Pendiente | — |
+| Fase 4 — Salida | 12-13 | 🔴 Pendiente | — |
+| Fase 5 — Docker | 14 | 🔴 Pendiente | — |
 
 ## God Nodes (más conectados)
-- **auditor_avanzado** — nodo central. Recibe el audio de Fase 1 y es documentado por README y doc técnica.
+- **auditor_avanzado** — recibe el guión de Fase 2 y es documentado por README y doc técnica.
 
 ## Surprising Connections
-- `fase1_nodo_voxlingua` → `auditor_avanzado_evaluar_llamada_local` (feeds_into, INFERRED): La Fase 1 y el núcleo auditor son **las dos mitades del mismo pipeline** — el audio_vad.wav de Fase 1 es la entrada exacta que necesita evaluar_llamada_local().
+- `fase1_nodo_voxlingua` → `fase2_nodo_whisper` (receives_from): Fase 1 y Fase 2 son un pipeline continuo — `audio_vad.wav` fluye directamente de una a otra.
+- `fase2_nodo_pyannote` → `auditor_avanzado_evaluar_llamada_local` (feeds_into, INFERRED): El guión diarizado de Fase 2 es la entrada exacta del auditor — tres comunidades forman una sola cadena.
 
 ## Import Cycles
 - None detected.
 
-## Communities (5 total)
+## Communities (6 total)
 
 ### Community 0 — Motor de Auditoría (cohesión: 0.67) — prototipo de referencia
 - `auditor_avanzado.py`
@@ -42,16 +43,22 @@
 
 ### Community 3 — Pipeline Audio Fase 1 (cohesión: 0.90) ✅ COMPLETADA
 - `notebooks/fase1_audio.ipynb`
-- `Nodo 1: ffmpeg` — normaliza a WAV 16kHz mono
-- `Nodo 2: noisereduce` — reducción de ruido (→ DeepFilterNet 3 en Docker)
-- `Nodo 3: Silero VAD v5` — eliminó 20.1% de silencios (1231s → 983s)
-- `Nodo 4: VoxLingua107` — detectó ES con 74.3% confianza, sin flags
+- `Nodo 1: ffmpeg` — WAV 16kHz mono
+- `Nodo 2: noisereduce` (→ DeepFilterNet 3 en Docker)
+- `Nodo 3: Silero VAD` — 1231s → 983s (20.1% reducción)
+- `Nodo 4: VoxLingua107` — ES, 74.3%, sin flags
 
 ### Community 4 — Documentación (cohesión: 1.0)
-- `docs/documentacion_tecnica.docx` — v1.1, Fase 1 registrada
-- `README.md` — repo GitHub: prohylurte/auditoria-digi (privado)
+- `docs/documentacion_tecnica.docx` — v1.1
+- `README.md` — v2, estado actualizado por fase
 
-## Próximas conexiones esperadas (Fase 2)
-- `notebooks/fase2_transcripcion.ipynb` → Community 5
-- `fase2_whisper` → recibe `audio_vad.wav` de `fase1_nodo_voxlingua`
-- `fase2_pyannote` → requiere token HuggingFace
+### Community 5 — Pipeline Transcripción Fase 2 (cohesión: 0.85) 🟡 EN PROGRESO
+- `notebooks/fase2_transcripcion.ipynb`
+- `Nodo 5: faster-whisper Medium` — ASR (Colab: faster-whisper, sin conflicto NumPy; Docker: WhisperX + Large V3)
+- `Nodo 8: stable-ts` — alineación palabra a palabra (Colab: stable-ts; Docker: WhisperX alignment)
+- `Nodo 9: pyannote 3.1` — diarización, token HuggingFace via getpass
+
+## Próximas conexiones esperadas (Fase 3)
+- `notebooks/fase3_analisis_ia.ipynb` → Community 6
+- `fase3_qwen3` → recibe `guion_diarizado.txt` de `fase2_nodo_pyannote`
+- `fase3_rag` → BGE-M3 + pgvector sobre criterios DIGI

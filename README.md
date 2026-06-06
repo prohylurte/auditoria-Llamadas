@@ -22,7 +22,7 @@ ffmpeg → noisereduce/DeepFilterNet 3 → Silero VAD → VoxLingua107
 | Fase | Descripción | Estado | Resultado |
 |------|-------------|--------|-----------|
 | Fase 1 | Audio: ffmpeg, noisereduce, Silero VAD, VoxLingua107 | ✅ Completada | 20min llamada · 20.1% silencios eliminados · ES 74.3% |
-| Fase 2 | Transcripción: Whisper Medium, WhisperX, pyannote | 🟡 En progreso | — |
+| Fase 2 | Transcripción: faster-whisper, stable-ts, pyannote | 🟡 En progreso | — |
 | Fase 3 | Análisis IA: Qwen3-8B, RAG | 🔴 Pendiente | — |
 | Fase 4 | Salida: PDF, PostgreSQL | 🔴 Pendiente | — |
 | Fase 5 | Docker / Datacenter | 🔴 Pendiente | — |
@@ -34,7 +34,8 @@ Se desarrolla con modelos ligeros (Colab) y se sustituyen por los definitivos en
 | Nodo | Colab (desarrollo) | Docker (producción) |
 |------|--------------------|---------------------|
 | Ruido | noisereduce | DeepFilterNet 3 |
-| ASR primario | Whisper Medium | Whisper Large V3 |
+| ASR primario | faster-whisper Medium | WhisperX + Large V3 |
+| Alineación | stable-ts | WhisperX (word alignment) |
 | ASR secundario | *(omitido en v1)* | Qwen3-ASR |
 | LLM análisis | Qwen3-8B Q4 (Ollama) | Qwen3-235B (vLLM) |
 | LLM verificador | *(omitido en v1)* | GLM-5 |

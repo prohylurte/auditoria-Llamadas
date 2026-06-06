@@ -1,4 +1,4 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v8: Fase 3 COMPLETADA)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v9: Rúbrica enriquecida con Condiciones Generales)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -18,6 +18,20 @@
 | Fase 4 — Salida | 12-13 | 🔴 Pendiente | — |
 | Fase 5 — Docker | 14 | 🔴 Pendiente | — |
 
+## Actualización v9 — Base de Conocimiento DIGI
+
+Condiciones Generales DIGI (Tarifa v.14.8, mayo 2026) analizadas e integradas en la rúbrica:
+
+| Criterio | Enriquecimiento |
+|----------|----------------|
+| `ps2` | Portabilidad: 1 día hábil (02:00-06:00); umbral uso no razonable (>30× o >150 números) |
+| `ao3` | Precios completos (3€–15€ móvil; 10€–30€ fibra); permanencia 3 meses; router depósito; IVA incluido |
+| `ao4` | 10 ventajas estrella documentadas: precio, red Movistar, datos acumulables, DIGI-DIGI gratis, 3 meses permanencia, instalación gratis, router depósito, descuentos combo, datos reducidos, facturación por segundos |
+| `ao5` | Tabla de precios de referencia + guía de cálculo de ahorro (€/mes y €/año) con ejemplo concreto |
+| `cl2` | Plazos oficiales: portabilidad 1 día hábil; router mensajería; penalización 50€ router no devuelto |
+
+Archivo de conocimiento generado: `docs/rubrica_digi_conocimiento.json`
+
 ## God Nodes (más conectados)
 - **auditor_avanzado** — recibe el guión de Fase 2 y es documentado por README y doc técnica.
 
@@ -28,7 +42,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (6 total)
+## Communities (7 total)
 
 ### Community 0 — Motor de Auditoría (cohesión: 0.67) — prototipo de referencia
 - `auditor_avanzado.py`
@@ -50,6 +64,7 @@
 
 ### Community 4 — Documentación (cohesión: 1.0)
 - `docs/documentacion_tecnica.docx` — v1.1
+- `docs/rubrica_digi_conocimiento.json` — v1.0 (Condiciones Generales v.14.8)
 - `README.md` — v2, estado actualizado por fase
 
 ### Community 5 — Pipeline Transcripción Fase 2 (cohesión: 0.90) ✅ COMPLETADA
@@ -62,6 +77,7 @@
 - `notebooks/fase3_analisis_ia.ipynb`
 - `Nodo 10: Qwen3-8B Q4` — LLM auditor (4-bit T4; Docker: Qwen3-235B vLLM)
 - `Nodo 11: Rúbrica DIGI + Puntuación Dinámica` — 30 criterios, pesos N/A-aware, resultado_fase3.json
+- **Rúbrica enriquecida** — guías ps2, ao3, ao4, ao5, cl2 actualizadas con Condiciones Generales
 
 ## Próximas conexiones esperadas (Fase 4)
 - `notebooks/fase4_salida.ipynb` → Community 7

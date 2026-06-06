@@ -133,5 +133,34 @@
     ],
     "nota": "Nota baja esperada — llamada de prueba corta (3 intervenciones). Pipeline funcional."
   },
-  "fase3_notebook_version": "v1_final"
+  "fase3_notebook_version": "v1_final",
+  "condiciones_generales_digi": {
+    "status": "ANALIZADO",
+    "version_tarifa": "v.14.8, 5 mayo 2026",
+    "paginas": 24,
+    "criterios_rubrica_enriquecidos": [
+      "ps2",
+      "ao3",
+      "ao4",
+      "ao5",
+      "cl2"
+    ],
+    "archivo_conocimiento": "docs/rubrica_digi_conocimiento.json",
+    "productos_documentados": [
+      "Móvil prepago (6 tarifas: 3€-15€)",
+      "Móvil pospago (6 tarifas + ILIMITODO)",
+      "Fibra DIGI Net (300Mb=25€, 1Gb=30€)",
+      "Fibra SMART (500Mb=10€ a PRO-DIGI 10Gb=25€)",
+      "DIGI Tel (fija, 1€/mes)",
+      "Combo fibra+móvil (-2€/línea)"
+    ],
+    "politicas_documentadas": [
+      "Portabilidad 1 día hábil (02:00-06:00)",
+      "Permanencia fibra 3 meses",
+      "Router en depósito (50€ penalización si no devuelve)",
+      "Instalación fibra sin coste",
+      "Uso no razonable: >30x consumo o >150 números/mes",
+      "IVA 21% incluido (IGIC 7% Canarias, IPSI Ceuta/Melilla)"
+    ]
+  }
 }

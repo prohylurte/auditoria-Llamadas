@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "fuente": "Condiciones Generales DIGI Spain Telecom — Tarifa v.14.8, 5 mayo 2026",
+  "descripcion": "Base de conocimiento de productos y políticas DIGI para el sistema de auditoría automática de llamadas C2C",
+  "tarifas_movil": {
+    "prepago": [
+      {"nombre": "5GB + 100 min", "precio_mes": 3, "datos_gb": 5, "llamadas": "100 min"},
+      {"nombre": "25GB + 100 min", "precio_mes": 5, "datos_gb": 25, "llamadas": "100 min"},
+      {"nombre": "50GB + ilimitadas", "precio_mes": 7, "datos_gb": 50, "llamadas": "ilimitadas"},
+      {"nombre": "100GB + ilimitadas", "precio_mes": 10, "datos_gb": 100, "llamadas": "ilimitadas"},
+      {"nombre": "150GB + ilimitadas", "precio_mes": 12, "datos_gb": 150, "llamadas": "ilimitadas"},
+      {"nombre": "250GB + ilimitadas", "precio_mes": 15, "datos_gb": 250, "llamadas": "ilimitadas"}
+    ],
+    "pospago": [
+      {"nombre": "5GB + 100 min", "precio_mes": 3, "precio_con_fibra": 1, "datos_gb": 5, "llamadas": "100 min"},
+      {"nombre": "25GB + 100 min", "precio_mes": 5, "precio_con_fibra": 3, "datos_gb": 25, "llamadas": "100 min"},
+      {"nombre": "50GB + ilimitadas", "precio_mes": 7, "precio_con_fibra": 5, "datos_gb": 50, "llamadas": "ilimitadas"},
+      {"nombre": "ILIMITODO", "precio_mes": 10, "precio_con_fibra": 8, "datos_gb": "ilimitados", "llamadas": "ilimitadas"},
+      {"nombre": "ILIMITODO (2 líneas)", "precio_mes": 8, "precio_con_fibra": 6, "datos_gb": "ilimitados", "llamadas": "ilimitadas"},
+      {"nombre": "ILIMITODO (3+ líneas)", "precio_mes": 6, "precio_con_fibra": 5, "datos_gb": "ilimitados", "llamadas": "ilimitadas"}
+    ],
+    "descuento_combinado": "-2€/línea pospago al combinar con fibra DIGI"
+  },
+  "tarifas_fibra": {
+    "DIGI_Net": [
+      {"nombre": "Fibra 300Mb", "precio_mes": 25, "velocidad_bajada_mb": 300},
+      {"nombre": "Fibra 1Gb", "precio_mes": 30, "velocidad_bajada_mb": 1000}
+    ],
+    "SMART": [
+      {"nombre": "Fibra SMART 500Mb", "precio_mes": 10, "velocidad_bajada_mb": 500},
+      {"nombre": "Fibra SMART 750Mb", "precio_mes": 15, "velocidad_bajada_mb": 750},
+      {"nombre": "Fibra SMART 1Gb", "precio_mes": 20, "velocidad_bajada_mb": 1000},
+      {"nombre": "PRO-DIGI 10Gb", "precio_mes": 25, "velocidad_bajada_mb": 10000}
+    ],
+    "condiciones": {
+      "permanencia_meses": 3,
+      "instalacion_coste": 0,
+      "router": "depósito (devolver en 15 días al cancelar; penalización 50€ por equipos no devueltos)",
+      "ip_publica": "add-on Conexión Plus por 1€/mes adicional",
+      "tecnologia": "FTTH (fibra óptica hasta el hogar)"
+    }
+  },
+  "tarifas_fija": {
+    "DIGI_Tel": {"precio_mes": 1, "nota": "llamadas facturadas por minuto excepto DIGI-a-DIGI"}
+  },
+  "ventajas_estrella_digi": [
+    {"id": 1, "nombre": "Precio competitivo", "detalle": "50GB+ilimitadas por 7€/mes; ILIMITODO por 10€/mes"},
+    {"id": 2, "nombre": "Red Movistar", "detalle": "Cobertura 4G/5G de la mejor red de España"},
+    {"id": 3, "nombre": "Datos acumulables", "detalle": "Los GB no consumidos se acumulan al mes siguiente sin límite"},
+    {"id": 4, "nombre": "DIGI-a-DIGI gratis", "detalle": "Llamadas ilimitadas entre clientes DIGI en España, Rumanía e Italia"},
+    {"id": 5, "nombre": "Permanencia mínima", "detalle": "Solo 3 meses en fibra (vs 12-18 meses en competidores)"},
+    {"id": 6, "nombre": "Instalación fibra gratis", "detalle": "Sin coste de alta, ingeniería ni instalación"},
+    {"id": 7, "nombre": "Router en depósito", "detalle": "No hay que comprarlo; se devuelve al cancelar"},
+    {"id": 8, "nombre": "Descuentos combinados", "detalle": "-2€/línea pospago al combinar con fibra DIGI"},
+    {"id": 9, "nombre": "Datos a velocidad reducida", "detalle": "Al agotar el bono, el servicio continúa a velocidad reducida (no se corta)"},
+    {"id": 10, "nombre": "Tarificación por segundos", "detalle": "Desde el primer segundo en llamadas nacionales (sin redondeo al minuto)"}
+  ],
+  "politicas_clave": {
+    "portabilidad": {
+      "plazo_dias_habiles": 1,
+      "interrupcion_horario": "02:00 - 06:00 horas del día de cambio"
+    },
+    "uso_razonable": {
+      "umbral_consumo": ">30× consumo medio mensual",
+      "umbral_numeros": ">150 números distintos llamados al mes"
+    },
+    "permanencia_fibra_meses": 3,
+    "iva": {
+      "peninsula_baleares": "21%",
+      "canarias_igic": "7%",
+      "ceuta_ipsi": "10%",
+      "melilla_ipsi": "8%",
+      "nota": "IVA incluido en todos los precios publicados"
+    }
+  },
+  "criterios_rubrica_enriquecidos": ["ps2", "ao3", "ao4", "ao5", "cl2"],
+  "fecha_actualizacion": "2026-06-06"
+}

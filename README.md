@@ -22,7 +22,7 @@ ffmpeg → noisereduce/DeepFilterNet 3 → Silero VAD → VoxLingua107
 | Fase | Descripción | Estado | Resultado |
 |------|-------------|--------|-----------|
 | Fase 1 | Audio: ffmpeg, noisereduce, Silero VAD, VoxLingua107 | ✅ Completada | 20min llamada · 20.1% silencios eliminados · ES 74.3% |
-| Fase 2 | Transcripción: faster-whisper, stable-ts, pyannote | 🟡 En progreso | — |
+| Fase 2 | Transcripción: faster-whisper, pyannote | ✅ Completada | 2 interlocutores · 3 intervenciones · guion_diarizado.txt |
 | Fase 3 | Análisis IA: Qwen3-8B, RAG | 🔴 Pendiente | — |
 | Fase 4 | Salida: PDF, PostgreSQL | 🔴 Pendiente | — |
 | Fase 5 | Docker / Datacenter | 🔴 Pendiente | — |

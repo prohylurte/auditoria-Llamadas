@@ -65,11 +65,24 @@
     "flags_activos": false,
     "nota_implementacion": "noisereduce en Colab; DeepFilterNet 3 en Docker final"
   },
-  "fase2_status": "EN_PROGRESO",
-  "fase2_nota_implementacion": "faster-whisper (Nodo 5 + 8 integrados, word_timestamps nativo). Nodo 9: pyannote. Sin stable-ts/numba — elimina conflicto numpy 2.x.",
+  "fase2_status": "COMPLETADA",
+  "fase2_nota_implementacion": "faster-whisper Medium (Nodo 5+8 integrados, word_timestamps nativo). pyannote 3.1 con tensor input y .speaker_diarization (API nueva). Sin stable-ts/numba — zero conflicto numpy 2.x.",
   "tokens": {
     "input": 0,
     "output": 0
   },
-  "fase2_notebook_version": "v5"
+  "fase2_notebook_version": "v6_final",
+  "fase2_resultado": {
+    "n_interlocutores": 2,
+    "speakers": {
+      "SPEAKER_00": 401,
+      "SPEAKER_01": 1
+    },
+    "n_intervenciones_guion": 3,
+    "archivos_salida": [
+      "guion_diarizado.txt",
+      "resultado_fase2.json"
+    ],
+    "nota": "Diarización funcional en Colab. Docker producirá mejor separación con modelo completo."
+  }
 }

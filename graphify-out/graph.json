@@ -106,47 +106,48 @@
       "id": "fase1_nodo_voxlingua"
     },
     {
-      "label": "notebooks/fase2_transcripcion.ipynb 🟡",
+      "label": "notebooks/fase2_transcripcion.ipynb ✅",
       "file_type": "notebook",
       "source_file": "notebooks/fase2_transcripcion.ipynb",
       "source_location": "Cell 1",
       "community": 5,
-      "status": "en_progreso",
+      "status": "completado",
       "norm_label": "notebooks/fase2_transcripcion.ipynb",
       "id": "fase2_transcripcion"
     },
     {
-      "label": "Nodo 5: faster-whisper Medium (→ Large V3 Docker)",
+      "label": "Nodo 5+8: faster-whisper Medium ✅",
       "file_type": "notebook_cell",
       "source_file": "notebooks/fase2_transcripcion.ipynb",
       "source_location": "Cell 5",
       "community": 5,
-      "status": "pendiente_ejecucion",
-      "note": "Colab: faster-whisper (sin conflicto NumPy). Docker: whisperX + Large V3",
+      "status": "completado",
+      "note": "word_timestamps nativo; Docker: WhisperX + Large V3",
       "norm_label": "nodo_faster_whisper",
       "id": "fase2_nodo_whisper"
     },
     {
-      "label": "Nodo 8: stable-ts (alineación → WhisperX Docker)",
+      "label": "Nodo 8: word_timestamps nativos ✅",
       "file_type": "notebook_cell",
       "source_file": "notebooks/fase2_transcripcion.ipynb",
       "source_location": "Cell 6",
       "community": 5,
-      "status": "pendiente_ejecucion",
+      "status": "completado",
       "note": "Colab: stable-ts (compatible NumPy 2.x). Docker: WhisperX word alignment",
       "norm_label": "nodo_stable_ts",
       "id": "fase2_nodo_whisperx"
     },
     {
-      "label": "Nodo 9: pyannote (diarización)",
+      "label": "Nodo 9: pyannote 3.1 ✅",
       "file_type": "notebook_cell",
       "source_file": "notebooks/fase2_transcripcion.ipynb",
       "source_location": "Cell 7",
       "community": 5,
-      "status": "pendiente_ejecucion",
+      "status": "completado",
       "note": "Requiere token HuggingFace — introducido via getpass",
       "norm_label": "nodo_pyannote",
-      "id": "fase2_nodo_pyannote"
+      "id": "fase2_nodo_pyannote",
+      "resultado": "2 speakers, 3 intervenciones, guion_diarizado.txt"
     },
     {
       "label": "docs/documentacion_tecnica.docx v1.1",

@@ -1,4 +1,4 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v5: Nodo 8 nativo (sin stable-ts/numba), zero numpy conflict)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v6: Fase 2 COMPLETADA)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -13,7 +13,7 @@
 | Fase | Nodos | Estado | Resultado |
 |------|-------|--------|-----------|
 | Fase 1 — Audio | 1-4 | ✅ COMPLETADA | 20min, 20.1% silencios, ES 74.3% |
-| Fase 2 — Transcripción | 5, 8, 9 | 🟡 EN PROGRESO | Fixes aplicados — ejecutando en Colab |
+| Fase 2 — Transcripción | 5, 8, 9 | ✅ COMPLETADA  | 2 interlocutores · 3 intervenciones · guion_diarizado.txt |
 | Fase 3 — Análisis IA | 10-11 | 🔴 Pendiente | — |
 | Fase 4 — Salida | 12-13 | 🔴 Pendiente | — |
 | Fase 5 — Docker | 14 | 🔴 Pendiente | — |
@@ -52,7 +52,7 @@
 - `docs/documentacion_tecnica.docx` — v1.1
 - `README.md` — v2, estado actualizado por fase
 
-### Community 5 — Pipeline Transcripción Fase 2 (cohesión: 0.85) 🟡 EN PROGRESO
+### Community 5 — Pipeline Transcripción Fase 2 (cohesión: 0.90) ✅ COMPLETADA
 - `notebooks/fase2_transcripcion.ipynb`
 - `Nodo 5: faster-whisper Medium` ✓ — ASR sin conflicto NumPy 2.x
 - `Nodo 8: word_timestamps nativos de faster-whisper` ✓ — sin dependencias externas

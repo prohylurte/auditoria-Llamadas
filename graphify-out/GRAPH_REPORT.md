@@ -1,4 +1,4 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v4: auto-fix NumPy, faster-whisper, pyannote token fix)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v5: Nodo 8 nativo (sin stable-ts/numba), zero numpy conflict)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -55,7 +55,7 @@
 ### Community 5 — Pipeline Transcripción Fase 2 (cohesión: 0.85) 🟡 EN PROGRESO
 - `notebooks/fase2_transcripcion.ipynb`
 - `Nodo 5: faster-whisper Medium` ✓ — ASR sin conflicto NumPy 2.x
-- `Nodo 8: stable-ts` ✓ — alineación compatible NumPy 2.x
+- `Nodo 8: word_timestamps nativos de faster-whisper` ✓ — sin dependencias externas
 - `Nodo 9: pyannote 3.1` ✓ — fix use_auth_token → token (API nueva)
 
 ## Próximas conexiones esperadas (Fase 3)

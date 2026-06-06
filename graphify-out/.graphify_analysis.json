@@ -66,10 +66,10 @@
     "nota_implementacion": "noisereduce en Colab; DeepFilterNet 3 en Docker final"
   },
   "fase2_status": "EN_PROGRESO",
-  "fase2_nota_implementacion": "faster-whisper + stable-ts + pyannote. Auto-fix NumPy en Paso 0 del notebook. Fix: use_auth_token → token (pyannote API nueva).",
+  "fase2_nota_implementacion": "faster-whisper (Nodo 5 + 8 integrados, word_timestamps nativo). Nodo 9: pyannote. Sin stable-ts/numba — elimina conflicto numpy 2.x.",
   "tokens": {
     "input": 0,
     "output": 0
   },
-  "fase2_notebook_version": "v4"
+  "fase2_notebook_version": "v5"
 }

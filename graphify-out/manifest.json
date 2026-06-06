@@ -20,9 +20,9 @@
     "semantic_hash": "readme_v2_fase1_completada_fase2_progreso"
   },
   "notebooks/fase2_transcripcion.ipynb": {
-    "mtime": 1780756274.8431509,
-    "ast_hash": "fase2_v4_autofix_numpy_paso0",
-    "semantic_hash": "fase2_v4_autofix_numpy_paso0"
+    "mtime": 1780756937.1084573,
+    "ast_hash": "fase2_v5_sin_stable_ts_nodo8_nativo",
+    "semantic_hash": "fase2_v5_sin_stable_ts_nodo8_nativo"
   },
   ".gitignore": {
     "mtime": 1780652629.063943,

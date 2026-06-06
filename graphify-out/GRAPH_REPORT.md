@@ -1,4 +1,4 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-05 — actualizado tras creación Fase 2)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — fixes Fase 2: faster-whisper, token API)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -13,7 +13,7 @@
 | Fase | Nodos | Estado | Resultado |
 |------|-------|--------|-----------|
 | Fase 1 — Audio | 1-4 | ✅ COMPLETADA | 20min, 20.1% silencios, ES 74.3% |
-| Fase 2 — Transcripción | 5, 8, 9 | 🟡 EN PROGRESO | Notebook listo, pendiente ejecución |
+| Fase 2 — Transcripción | 5, 8, 9 | 🟡 EN PROGRESO | Fixes aplicados — ejecutando en Colab |
 | Fase 3 — Análisis IA | 10-11 | 🔴 Pendiente | — |
 | Fase 4 — Salida | 12-13 | 🔴 Pendiente | — |
 | Fase 5 — Docker | 14 | 🔴 Pendiente | — |
@@ -54,9 +54,9 @@
 
 ### Community 5 — Pipeline Transcripción Fase 2 (cohesión: 0.85) 🟡 EN PROGRESO
 - `notebooks/fase2_transcripcion.ipynb`
-- `Nodo 5: faster-whisper Medium` — ASR (Colab: faster-whisper, sin conflicto NumPy; Docker: WhisperX + Large V3)
-- `Nodo 8: stable-ts` — alineación palabra a palabra (Colab: stable-ts; Docker: WhisperX alignment)
-- `Nodo 9: pyannote 3.1` — diarización, token HuggingFace via getpass
+- `Nodo 5: faster-whisper Medium` ✓ — ASR sin conflicto NumPy 2.x
+- `Nodo 8: stable-ts` ✓ — alineación compatible NumPy 2.x
+- `Nodo 9: pyannote 3.1` ✓ — fix use_auth_token → token (API nueva)
 
 ## Próximas conexiones esperadas (Fase 3)
 - `notebooks/fase3_analisis_ia.ipynb` → Community 6

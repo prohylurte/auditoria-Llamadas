@@ -20,9 +20,9 @@
     "semantic_hash": "readme_v2_fase1_completada_fase2_progreso"
   },
   "notebooks/fase2_transcripcion.ipynb": {
-    "mtime": 1780663826.90839,
-    "ast_hash": "fase2_notebook_whisper_whisperx_pyannote",
-    "semantic_hash": "fase2_notebook_whisper_whisperx_pyannote"
+    "mtime": 1780754632.5491242,
+    "ast_hash": "fase2_faster_whisper_stable_ts_pyannote_v3_fix_token",
+    "semantic_hash": "fase2_faster_whisper_stable_ts_pyannote_v3_fix_token"
   },
   ".gitignore": {
     "mtime": 1780652629.063943,

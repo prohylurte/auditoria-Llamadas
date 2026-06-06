@@ -23,7 +23,7 @@ ffmpeg → noisereduce/DeepFilterNet 3 → Silero VAD → VoxLingua107
 |------|-------------|--------|-----------|
 | Fase 1 | Audio: ffmpeg, noisereduce, Silero VAD, VoxLingua107 | ✅ Completada | 20min llamada · 20.1% silencios eliminados · ES 74.3% |
 | Fase 2 | Transcripción: faster-whisper, pyannote | ✅ Completada | 2 interlocutores · 3 intervenciones · guion_diarizado.txt |
-| Fase 3 | Análisis IA: Qwen3-8B, RAG | 🟡 En progreso | Notebook listo — pendiente ejecutar |
+| Fase 3 | Análisis IA: Qwen3-8B, RAG | ✅ Completada | 30 criterios · 3.57/10 prueba · resultado_fase3.json |
 | Fase 4 | Salida: PDF, PostgreSQL | 🔴 Pendiente | — |
 | Fase 5 | Docker / Datacenter | 🔴 Pendiente | — |
 
@@ -48,7 +48,7 @@ auditoria-digi/
 ├── notebooks/
 │   ├── fase1_audio.ipynb          ✅ Completado — Nodos 1-4
 │   ├── fase2_transcripcion.ipynb  ✅ Completado — Nodos 5, 8, 9
-│   ├── fase3_analisis_ia.ipynb    🟡 Listo — Nodos 10-11 (ejecutar en Colab)
+│   ├── fase3_analisis_ia.ipynb    ✅ Completado — Nodos 10-11
 │   └── fase4_salida.ipynb         🔴 Pendiente — Nodos 12-13
 ├── src/
 │   ├── audio/

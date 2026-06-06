@@ -170,36 +170,37 @@
       "id": "readme"
     },
     {
-      "label": "notebooks/fase3_analisis_ia.ipynb 🟡",
+      "label": "notebooks/fase3_analisis_ia.ipynb ✅",
       "file_type": "notebook",
       "source_file": "notebooks/fase3_analisis_ia.ipynb",
       "source_location": "Cell 1",
       "community": 6,
-      "status": "notebook_listo",
+      "status": "completado",
       "norm_label": "notebooks/fase3_analisis_ia.ipynb",
       "id": "fase3_analisis"
     },
     {
-      "label": "Nodo 10: Qwen3-8B Q4 🟡",
+      "label": "Nodo 10: Qwen3-8B Q4 ✅",
       "file_type": "notebook_cell",
       "source_file": "notebooks/fase3_analisis_ia.ipynb",
       "source_location": "Cell 7",
       "community": 6,
-      "status": "notebook_listo",
+      "status": "completado",
       "note": "4-bit bitsandbytes en T4; Docker: Qwen3-235B vLLM",
       "norm_label": "nodo_qwen3",
       "id": "fase3_nodo_qwen3"
     },
     {
-      "label": "Nodo 11: Rúbrica DIGI + Puntuación Dinámica 🟡",
+      "label": "Nodo 11: Rúbrica DIGI + Puntuación Dinámica ✅",
       "file_type": "notebook_cell",
       "source_file": "notebooks/fase3_analisis_ia.ipynb",
       "source_location": "Cell 8",
       "community": 6,
-      "status": "notebook_listo",
+      "status": "completado",
       "note": "30 criterios, pesos dinámicos (N/A excluido), salida resultado_fase3.json",
       "norm_label": "nodo_rubrica",
-      "id": "fase3_nodo_rubrica"
+      "id": "fase3_nodo_rubrica",
+      "resultado": "30 criterios evaluados, nota 3.57/10 (llamada prueba), resultado_fase3.json generado"
     }
   ],
   "links": [

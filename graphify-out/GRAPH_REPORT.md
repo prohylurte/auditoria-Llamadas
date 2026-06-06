@@ -1,4 +1,4 @@
-# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v7: Fase 3 Notebook LISTO)
+# Graph Report - /Users/hylurte/Auditoria  (2026-06-06 — v8: Fase 3 COMPLETADA)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -14,7 +14,7 @@
 |------|-------|--------|-----------|
 | Fase 1 — Audio | 1-4 | ✅ COMPLETADA | 20min, 20.1% silencios, ES 74.3% |
 | Fase 2 — Transcripción | 5, 8, 9 | ✅ COMPLETADA  | 2 interlocutores · 3 intervenciones · guion_diarizado.txt |
-| Fase 3 — Análisis IA | 10-11 | 🟡 NOTEBOOK LISTO | Qwen3-8B Q4 · 30 criterios · pesos dinámicos · resultado_fase3.json |
+| Fase 3 — Análisis IA | 10-11 | ✅ COMPLETADA | Qwen3-8B Q4 · 30 criterios · 3.57/10 llamada prueba · resultado_fase3.json |
 | Fase 4 — Salida | 12-13 | 🔴 Pendiente | — |
 | Fase 5 — Docker | 14 | 🔴 Pendiente | — |
 
@@ -58,7 +58,7 @@
 - `Nodo 8: word_timestamps nativos de faster-whisper` ✓ — sin dependencias externas
 - `Nodo 9: pyannote 3.1` ✓ — fix use_auth_token → token (API nueva)
 
-### Community 6 — Pipeline Análisis IA Fase 3 (cohesión: 0.90) 🟡 NOTEBOOK LISTO
+### Community 6 — Pipeline Análisis IA Fase 3 (cohesión: 0.90) ✅ COMPLETADA
 - `notebooks/fase3_analisis_ia.ipynb`
 - `Nodo 10: Qwen3-8B Q4` — LLM auditor (4-bit T4; Docker: Qwen3-235B vLLM)
 - `Nodo 11: Rúbrica DIGI + Puntuación Dinámica` — 30 criterios, pesos N/A-aware, resultado_fase3.json

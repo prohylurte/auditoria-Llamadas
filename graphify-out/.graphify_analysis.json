@@ -27,6 +27,11 @@
       "fase2_nodo_whisper",
       "fase2_nodo_whisperx",
       "fase2_nodo_pyannote"
+    ],
+    "6": [
+      "fase3_analisis",
+      "fase3_nodo_qwen3",
+      "fase3_nodo_rubrica"
     ]
   },
   "cohesion": {
@@ -35,7 +40,8 @@
     "2": 1.0,
     "3": 0.9,
     "4": 1.0,
-    "5": 0.85
+    "5": 0.85,
+    "6": 0.9
   },
   "gods": [
     "auditor_avanzado"
@@ -85,14 +91,47 @@
     ],
     "nota": "Diarización funcional en Colab. Docker producirá mejor separación con modelo completo."
   },
-  "fase3_status": "NOTEBOOK_LISTO",
+  "fase3_status": "COMPLETADA",
   "fase3_nota_implementacion": "Qwen3-8B Q4 (bitsandbytes 4-bit, T4 ~6GB VRAM). Rúbrica DIGI completa (30 criterios, 10 secciones) inyectada en prompt (RAG implícito). Pesos dinámicos: N/A excluido del denominador. Salida: resultado_fase3.json para Fase 4.",
   "fase3_rubrica": {
     "n_criterios": 30,
     "n_criticos": 5,
-    "secciones": ["Presentación", "Política de seguridad", "Sondeo", "Asignación de oferta", "Cierre de la venta", "Toma de datos y registro", "Cierre de la llamada", "Trato al cliente", "Gestión de esperas", "Capacidad de comunicación"],
+    "secciones": [
+      "Presentación",
+      "Política de seguridad",
+      "Sondeo",
+      "Asignación de oferta",
+      "Cierre de la venta",
+      "Toma de datos y registro",
+      "Cierre de la llamada",
+      "Trato al cliente",
+      "Gestión de esperas",
+      "Capacidad de comunicación"
+    ],
     "modelo_colab": "Qwen/Qwen3-8B (4-bit)",
     "modelo_docker": "Qwen3-235B (vLLM)",
     "sistema_puntuacion": "nota = sum(peso_i * Si_i) / sum(peso_j * aplicable_j) * 10"
-  }
+  },
+  "fase3_resultado": {
+    "nota_llamada_prueba": 3.57,
+    "n_criterios_evaluados": 30,
+    "n_si": 8,
+    "n_no": 14,
+    "n_na": 8,
+    "puntos_fuertes": [
+      "Saludo corporativo",
+      "Personalización",
+      "Empatía con cliente"
+    ],
+    "areas_mejora": [
+      "Cierre de venta",
+      "Imagen positiva DIGI",
+      "Estructura llamada"
+    ],
+    "archivos_salida": [
+      "resultado_fase3.json"
+    ],
+    "nota": "Nota baja esperada — llamada de prueba corta (3 intervenciones). Pipeline funcional."
+  },
+  "fase3_notebook_version": "v1_final"
 }

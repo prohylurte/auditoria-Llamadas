@@ -222,12 +222,14 @@ def fase2_transcripcion(fase1: dict, output_dir: Path, hf_token: str) -> dict:
 
     diarization = diar_pipeline(audio_path)
 
-    # pyannote >= 3.3 devuelve DiarizeOutput (TypedDict) en lugar de Annotation
-    # Extraer la Annotation compatible con itertracks()
+    # pyannote >= 3.3 devuelve DiarizeOutput en lugar de Annotation directamente
+    # Intentar extraer la Annotation por atributo, índice o uso directo
     if hasattr(diarization, "itertracks"):
-        annotation = diarization
+        annotation = diarization                    # versión antigua: ya es Annotation
+    elif hasattr(diarization, "annotation"):
+        annotation = diarization.annotation         # versión nueva: atributo .annotation
     else:
-        annotation = diarization.get("annotation", diarization)
+        annotation = diarization["annotation"]      # fallback: acceso dict
 
     # Construir índice de segmentos de speakers para búsqueda rápida
     speaker_segments = list(annotation.itertracks(yield_label=True))

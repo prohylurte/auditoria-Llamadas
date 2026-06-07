@@ -333,6 +333,9 @@ def fase3_analisis(fase2: dict, output_dir: Path, model_id: str, quant: str, hf_
         bnb_4bit_use_double_quant=True,
     )
 
+    # Reducir fragmentación de VRAM durante inferencia
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+
     log.info(f"  Cargando {model_id}...")
     os.environ["HUGGING_FACE_HUB_TOKEN"] = hf_token
     tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
@@ -346,35 +349,50 @@ def fase3_analisis(fase2: dict, output_dir: Path, model_id: str, quant: str, hf_
     log.info("  Modelo cargado OK")
 
     # Prompt de evaluación
-    rubrica_str = json.dumps(rubrica, ensure_ascii=False, indent=2)
-    prompt = f"""Eres un auditor experto de DIGI Spain Telecom. Evalúa la siguiente llamada contra la rúbrica proporcionada.
+    # Truncar la transcripción si es muy larga para no agotar VRAM en atención.
+    # Con T4 (14.6GB) y Qwen3-8B 4-bit, el límite práctico son ~3500 tokens de entrada.
+    MAX_TRANSCRIPT_CHARS = 6000  # ~1500 tokens aprox.
+    if len(guion_txt) > MAX_TRANSCRIPT_CHARS:
+        guion_txt = guion_txt[:MAX_TRANSCRIPT_CHARS] + "\n[...transcripcion truncada por limite de VRAM...]"
+        log.warning(f"  Transcripcion truncada a {MAX_TRANSCRIPT_CHARS} chars para caber en VRAM")
 
-RUBRICA:
+    # Rúbrica compacta (solo IDs, preguntas y pesos — sin descripciones largas)
+    criterios_compactos = []
+    for c in rubrica.get("criterios", []):
+        criterios_compactos.append({
+            "id": c.get("id", ""),
+            "pregunta": c.get("pregunta", "")[:80],
+            "peso": c.get("peso", 0),
+            "critico": c.get("critico", False),
+        })
+    rubrica_str = json.dumps({"criterios": criterios_compactos}, ensure_ascii=False)
+
+    prompt = f"""Eres auditor de DIGI Spain Telecom. Evalua la llamada con la rubrica.
+
+RUBRICA (criterios a evaluar):
 {rubrica_str}
 
-TRANSCRIPCION DE LA LLAMADA:
+TRANSCRIPCION:
 {guion_txt}
 
-Devuelve EXCLUSIVAMENTE un JSON válido con esta estructura:
-{{
-  "criterios": [
-    {{"id": "ps1", "respuesta": "Sí/No/N/A", "puntuacion": 0.10, "comentario": "..."}}
-  ],
-  "nota_final": 7.50,
-  "nota_estructura": 7.80,
-  "nota_actitud": 6.90,
-  "n_criticos_ko": 0,
-  "observaciones": "...",
-  "puntos_fuertes": ["...", "..."],
-  "areas_mejora": ["...", "..."]
-}}"""
+Responde SOLO con JSON valido:
+{{"criterios":[{{"id":"ps1","respuesta":"Si/No/N/A","puntuacion":0.10,"comentario":"..."}}],"nota_final":7.50,"nota_estructura":7.80,"nota_actitud":6.90,"n_criticos_ko":0,"observaciones":"...","puntos_fuertes":["..."],"areas_mejora":["..."]}}"""
 
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    n_tokens = inputs["input_ids"].shape[1]
+    log.info(f"  Prompt: {n_tokens} tokens de entrada")
+
+    # Si aun así el prompt es demasiado largo, truncar tokens directamente
+    MAX_INPUT_TOKENS = 3500
+    if n_tokens > MAX_INPUT_TOKENS:
+        inputs["input_ids"] = inputs["input_ids"][:, -MAX_INPUT_TOKENS:]
+        inputs["attention_mask"] = inputs["attention_mask"][:, -MAX_INPUT_TOKENS:]
+        log.warning(f"  Prompt truncado a {MAX_INPUT_TOKENS} tokens")
+
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=2048,
-            temperature=0.1,
+            max_new_tokens=1024,
             do_sample=False,
             pad_token_id=tokenizer.eos_token_id,
         )

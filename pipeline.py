@@ -222,12 +222,22 @@ def fase2_transcripcion(fase1: dict, output_dir: Path, hf_token: str) -> dict:
 
     diarization = diar_pipeline(audio_path)
 
+    # pyannote >= 3.3 devuelve DiarizeOutput (TypedDict) en lugar de Annotation
+    # Extraer la Annotation compatible con itertracks()
+    if hasattr(diarization, "itertracks"):
+        annotation = diarization
+    else:
+        annotation = diarization.get("annotation", diarization)
+
+    # Construir índice de segmentos de speakers para búsqueda rápida
+    speaker_segments = list(annotation.itertracks(yield_label=True))
+
     # Cruzar transcripción con diarización
     guion = []
     for seg in segments:
         mid = (seg.start + seg.end) / 2
         speaker = "UNKNOWN"
-        for turn, _, spk in diarization.itertracks(yield_label=True):
+        for turn, _, spk in speaker_segments:
             if turn.start <= mid <= turn.end:
                 speaker = spk
                 break

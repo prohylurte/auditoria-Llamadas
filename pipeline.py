@@ -39,11 +39,13 @@ log = logging.getLogger("pipeline")
 # ── Constantes ────────────────────────────────────────────────────────────────
 VERSION = "1.0.0"
 
-# Umbrales VRAM (GB) para selección de modelo
+# Umbrales VRAM (GB) para selección de modelo.
+# Nota: Whisper + pyannote consumen ~3-4GB antes de llegar a Fase 3,
+# por eso Qwen3-14B necesita al menos 16GB disponibles en total.
 VRAM_UMBRALES = [
-    (8,  "Qwen/Qwen3-8B",  "4bit"),
-    (20, "Qwen/Qwen3-14B", "4bit"),
-    (999,"Qwen/Qwen3-72B", "4bit"),
+    (16,  "Qwen/Qwen3-8B",  "4bit"),
+    (24,  "Qwen/Qwen3-14B", "4bit"),
+    (999, "Qwen/Qwen3-72B", "4bit"),
 ]
 
 # ── Detección de GPU/VRAM ─────────────────────────────────────────────────────
@@ -279,6 +281,16 @@ def fase2_transcripcion(fase1: dict, output_dir: Path, hf_token: str) -> dict:
     }
     _guardar_json(output_dir / "resultado_fase2.json", resultado)
     log.info(f"  Fase 2 completada en {resultado['tiempo_fase2_s']}s — {len(speakers)} speakers")
+
+    # Liberar VRAM antes de cargar el LLM en Fase 3
+    import gc, torch
+    del whisper, diar_pipeline, segments, speaker_segments, annotation
+    gc.collect()
+    torch.cuda.empty_cache()
+    vram_libre = (torch.cuda.get_device_properties(0).total_memory
+                  - torch.cuda.memory_allocated()) / (1024**3)
+    log.info(f"  VRAM liberada — disponible para Fase 3: {vram_libre:.1f} GB")
+
     return resultado
 
 

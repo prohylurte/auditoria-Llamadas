@@ -210,9 +210,11 @@ def fase2_transcripcion(fase1: dict, output_dir: Path, hf_token: str) -> dict:
 
     # Diarización con pyannote
     log.info("  Cargando pyannote 3.1...")
+    # pyannote >= 3.x usa 'token' en lugar del deprecado 'use_auth_token'
+    from huggingface_hub import login as hf_login
+    hf_login(token=hf_token, add_to_git_credential=False)
     diar_pipeline = PyAnnotePipeline.from_pretrained(
         "pyannote/speaker-diarization-3.1",
-        use_auth_token=hf_token,
     )
     if device == "cuda":
         import torch

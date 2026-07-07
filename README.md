@@ -74,5 +74,3 @@ auditoria-digi/
 - Datos de llamadas excluidos del repositorio vía `.gitignore`
 
 ---
-
-*Proyecto confidencial — DIGI Spain Telecom S.A.U.*

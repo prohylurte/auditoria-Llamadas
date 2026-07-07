@@ -1,10 +1,10 @@
 # 🎙️ Auditoria — Sistema Automático de Control de Calidad
 
-Pipeline 100% offline y on-premise para evaluar llamadas comerciales del servicio C2C de DIGI Spain Telecom.
+Pipeline 100% offline y on-premise para evaluar llamadas comerciales
 
 ## ¿Qué hace?
 
-Transcribe, diariza y analiza cada llamada de audio de forma automática, generando un informe de auditoría con puntuación sobre 10 según la rúbrica interna de 31 puntos de DIGI.
+Transcribe, diariza y analiza cada llamada de audio de forma automática, generando un informe de auditoría con puntuación sobre 10 según la rúbrica interna de 31 puntos.
 
 ## Arquitectura
 
